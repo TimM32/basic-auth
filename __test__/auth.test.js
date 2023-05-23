@@ -25,4 +25,10 @@ describe('Auth Routes', (() => {
         expect(response.status).toEqual(200);
         expect(response.body.username).toEqual('Bob');
     });
+
+    test('allow for uer signin', async () => {
+        const reponse = await request.post('/signin').set('Authorization', 'Basic');
+
+        expect(response.status).toEqual(200);
+    });
 }));
