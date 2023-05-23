@@ -5,6 +5,6 @@ module.exports = (request, response, next) => {
   response.status(404).json({
     error: 404,
     route: request.baseUrl,
-    message: 'Error, No Value Found',
+    message: 'Error Not Found',
   });
 };
