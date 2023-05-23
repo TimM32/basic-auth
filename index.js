@@ -1,14 +1,16 @@
 'use strict';
 
 require('dotenv').config();
-const { sequelizeDatabase } = require('./src/models');
-const { start } = require('./src/server');
 
+const { sequelize } = require('./src/models');
+const { start } = require('./src/server');
 const PORT = process.env.PORT || 5002;
 
-sequelizeDatabase.sync()
+// make sure our tables are created, start up the HTTP server.
+sequelize.sync()
   .then(() => {
-    console.log('Connection Complete');
     start(PORT);
-  })
-  .catch(e => console.error(e));
+    // app.listen(PORT, () => console.log('server up on port:', PORT));
+  }).catch(e => {
+    console.error('Could not start server', e.message);
+  });

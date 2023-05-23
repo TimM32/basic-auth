@@ -1,34 +1,36 @@
 'use strict';
 
 // 3rd Party Resources
-require('dotenv').config();
-const express = require('express');
-const bcrypt = require('bcrypt');
-const base64 = require('base-64');
-const { Sequelize, DataTypes } = require('sequelize');
+// require('dotenv').config();
+// const express = require('express');
+// const bcrypt = require('bcrypt');
+// const base64 = require('base-64');
+// const { Sequelize, DataTypes } = require('sequelize');
+
+// const PORT = process.env.PORT || 5002
 
 // Prepare the express app
-const app = express();
+// const app = express();
 
 // Process JSON input and put the data on req.body
-app.use(express.json());
+// app.use(express.json());
 
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+// const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 // Process FORM intput and put the data on req.body
 app.use(express.urlencoded({ extended: true }));
 
-// Create a Sequelize model
-const Users = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  }
-});
+// // Create a Sequelize model
+// const Users = sequelize.define('User', {
+//   username: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+//   password: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   }
+// });
 
 // Signup Route -- create a new user
 // Two ways to test this route with httpie
@@ -87,7 +89,7 @@ app.post('/signin', async (req, res) => {
 // make sure our tables are created, start up the HTTP server.
 sequelize.sync()
   .then(() => {
-    app.listen(3000, () => console.log('server up'));
+    // app.listen(PORT, () => console.log('server up on port:', PORT));
   }).catch(e => {
     console.error('Could not start server', e.message);
   });
