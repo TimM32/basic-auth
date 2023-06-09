@@ -24,7 +24,7 @@ module.export = async (req, res, next) => {
       throw new Error('Invalid User');
     }
   } catch (error) {
-    next('Invalid Login. message: ', error.message);
+    next('Invalid Login');
   }
 
 };
