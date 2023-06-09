@@ -4,6 +4,7 @@ const supertest = require('supertest');
 const { app } = require('../src/server');
 const { sequelize } = require('../src/auth/models');
 const { describe, test } = require('node:test');
+const basicAuth = require('../src/auth/models/index');
 
 const request = supertest(app);
 
@@ -41,5 +42,5 @@ describe('Auth Routes', (() => {
 
     expect(next).toHaveBeenCalledWith('Login Failed');
   });
-  
+
 }));
