@@ -3,10 +3,13 @@
 const supertest = require('supertest');
 const { app } = require('../src/server');
 const { sequelize } = require('../src/auth/models');
-const { describe, test } = require('node:test');
 const basicAuth = require('../src/auth/models/index');
-
 const request = supertest(app);
+
+let user = {
+  username: 'Bob',
+  password: 'luckydog',
+};
 
 beforeAll( async () => {
   await sequelize.sync();
@@ -18,10 +21,8 @@ afterAll(async () => {
 
 describe('Auth Routes', (() => {
   test('allow for users signup', async() => {
-    const response = await request.post('/signup').sen({
-      username: 'Bob',
-      password: 'joy',
-    });
+    const response = await request.post('/signup').send(user);
+
 
     expect(response.status).toEqual(200);
     expect(response.body.username).toEqual('Bob');
