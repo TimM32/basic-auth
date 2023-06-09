@@ -8,6 +8,5 @@ const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory:' :proces
 const sequelize = new Sequelize(DATABASE_URL);
 const users = userSchema(sequelize, DataTypes);
 
-// const Users = userSchema(sequelize, DataTypes);
 
 module.exports = { sequelize, users };
