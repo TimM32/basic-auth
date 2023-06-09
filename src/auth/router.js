@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { Users } = require('./models');
-const base64 = require('base-64');
+// const base64 = require('base-64');
 const basicAuth = require('./middleware/');
 
 router.post('/signup', async (request, response, next) => {
