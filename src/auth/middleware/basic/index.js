@@ -23,6 +23,8 @@ module.export = async (req, res, next) => {
     else {
       throw new Error('Invalid User');
     }
-  } catch (error) { next('Invalid Login. message: ', error.message); }
+  } catch (error) {
+    next('Invalid Login. message: ', error.message);
+  }
 
 };
